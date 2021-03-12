@@ -285,7 +285,7 @@
         <role>analist</role>
         <role>developer</role>
       </roles>
-      <timezone>Europe/Madrid</timezone>
+      <timezone>Europe/Cordoba</timezone>
       <properties>
         <picUrl>http://www.example.com/frarodele/pic</picUrl>
       </properties>
