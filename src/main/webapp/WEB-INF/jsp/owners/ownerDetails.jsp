@@ -11,19 +11,19 @@
 
     <table class="table table-striped">
         <tr>
-            <th>Name</th>
+            <th class="table_header_light_grey" >Name</th>
             <td><b><c:out value="${owner.firstName} ${owner.lastName}"/></b></td>
         </tr>
         <tr>
-            <th>Address</th>
+            <th class="table_header_light_grey" >Address</th>
             <td><c:out value="${owner.address}"/></td>
         </tr>
         <tr>
-            <th>City</th>
+            <th class="table_header_light_grey" >City</th>
             <td><c:out value="${owner.city}"/></td>
         </tr>
         <tr>
-            <th>Telephone</th>
+            <th class="table_header_light_grey" >Telephone</th>
             <td><c:out value="${owner.telephone}"/></td>
         </tr>
     </table>
@@ -59,7 +59,7 @@
                 </td>
                 <td valign="top">
                     <table class="table-condensed">
-                        <thead>
+                        <thead class="table_header_light_grey">
                         <tr>
                             <th>Visit Date</th>
                             <th>Description</th>
