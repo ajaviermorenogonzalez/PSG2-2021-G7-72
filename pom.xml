@@ -324,6 +324,23 @@
         <picUrl>http://www.example.com/diegillos/pic</picUrl>
       </properties>
     </developer>
+    
+    <developer>
+      <id>frabreloz</id>
+      <name>Francisco Jose Brenes Lozano</name>
+      <email>frabreloz@alum.us.es</email>
+      <url>http://www.example.com/frabreloz</url>
+      <organization>ACME</organization>
+      <organizationUrl>http://www.example.com</organizationUrl>
+      <roles>
+        <role>analist</role>
+        <role>developer</role>
+      </roles>
+      <timezone>Europe/Madrid</timezone>
+      <properties>
+        <picUrl>http://www.example.com/frabreloz/pic</picUrl>
+      </properties>
+    </developer>
 
 </developers>
 
