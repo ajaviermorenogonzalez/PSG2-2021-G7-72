@@ -307,6 +307,23 @@
         <picUrl>http://www.example.com/siadan/pic</picUrl>
       </properties>
     </developer>
+    
+    <developer>
+      <id>diegillos</id>
+      <name>Diego Manuel Gil Losa</name>
+      <email>diegillos@alum.us.es</email>
+      <url>http://www.example.com/diegillos</url>
+      <organization>ACME</organization>
+      <organizationUrl>http://www.example.com</organizationUrl>
+      <roles>
+        <role>analist</role>
+        <role>developer</role>
+      </roles>
+      <timezone>Europe/Madrid</timezone>
+      <properties>
+        <picUrl>http://www.example.com/diegillos/pic</picUrl>
+      </properties>
+    </developer>
 
 </developers>
 
