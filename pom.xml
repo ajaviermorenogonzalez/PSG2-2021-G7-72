@@ -290,6 +290,23 @@
         <picUrl>http://www.example.com/frarodele/pic</picUrl>
       </properties>
     </developer>
+    
+    <developer>
+      <id>siadan</id>
+      <name>Siamion Danko</name>
+      <email>siadan@alum.us.es</email>
+      <url>http://www.example.com/siadan</url>
+      <organization>ACME</organization>
+      <organizationUrl>http://www.example.com</organizationUrl>
+      <roles>
+        <role>analist</role>
+        <role>developer</role>
+      </roles>
+      <timezone>Europe/Madrid</timezone>
+      <properties>
+        <picUrl>http://www.example.com/siadan/pic</picUrl>
+      </properties>
+    </developer>
 
 </developers>
 
