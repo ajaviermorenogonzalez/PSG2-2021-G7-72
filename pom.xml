@@ -3,8 +3,8 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.springframework.samples</groupId>
-    <artifactId>spring-petclinic</artifactId>
+    <groupId>es.us.psg2</groupId>
+    <artifactId>pring-petclinic.psg2.2021-G7-72</artifactId>
     <version>2.2.0.BUILD-SNAPSHOT</version>
 
     <parent>
