@@ -1,0 +1,28 @@
+project:
+  name: 'PSG2-2021-G7-72 Petclinic'
+  owner: 'L7'
+  teamId: '72'
+  identities:
+    github:
+      url: 'https://github.com/gii-is-psg2/PSG2-2021-G7-72'
+  members:
+    member1:
+      name: 'Antonio Javier'
+      surname: 'Moreno Gonzalez' 
+      githubUsername: 'antmorgon4'
+    member2:
+      name: 'Diego Manuel'
+      surname: 'Gil Losa'
+      githubUsername: 'DiegoHill'
+    member3:
+      name: 'Francisco Javier'
+      surname: 'Rodriguez Elena'
+      githubUsername: 'FranciscoJRE14'
+    member4:
+      name: 'Siamion'
+      surname: 'Danko'
+      githubUsername: 'siadan'
+    member5:
+      name: 'Francisco Jose'
+      surname: 'Brenes Lozano'
+      githubUsername: 'FraniBL'
