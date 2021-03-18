@@ -35,7 +35,16 @@
         <tr>
             <td>
                 <a href="<spring:url value="/vets.xml" htmlEscape="true" />">View as XML</a>
-            </td>            
+            </td>  
+            
+            <td>
+            	<div class="col-sm-offset-2 col-sm-10">
+	            	<sec:authorize access="hasAuthority('admin')">
+						<a class="btn btn-default" href='<spring:url value="/vets/new" htmlEscape="true"/>'>Add Vet</a>
+					</sec:authorize>
+				</div>
+            </td>           
         </tr>
     </table>
+    
 </petclinic:layout>
