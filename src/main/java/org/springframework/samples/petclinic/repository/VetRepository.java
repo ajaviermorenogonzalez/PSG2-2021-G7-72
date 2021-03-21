@@ -19,8 +19,11 @@ import java.util.Collection;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.samples.petclinic.model.Owner;
+import org.springframework.data.repository.query.Param;
+import org.springframework.samples.petclinic.model.BaseEntity;
 import org.springframework.samples.petclinic.model.Vet;
 
 /**
@@ -34,12 +37,28 @@ import org.springframework.samples.petclinic.model.Vet;
  * @author Sam Brannen
  * @author Michael Isvy
  */
-public interface VetRepository extends Repository<Vet, Integer>,CrudRepository<Vet, Integer>{
+public interface VetRepository extends Repository<Vet, Integer>{
 
+	/**
+	 * Save an <code>Vet</code> to the data store, either inserting or updating it.
+	 * @param vet the <code>Vet</code> to save
+	 * @see BaseEntity#isNew
+	 */
+	void save(Vet vet) throws DataAccessException;
+	
 	/**
 	 * Retrieve all <code>Vet</code>s from the data store.
 	 * @return a <code>Collection</code> of <code>Vet</code>s
 	 */
 	Collection<Vet> findAll() throws DataAccessException;
+	
+	/**
+	 * Retrieve an <code>Vet</code> from the data store by id.
+	 * @param id the id to search for
+	 * @return the <code>Vet</code> if found
+	 * @throws org.springframework.dao.DataRetrievalFailureException if not found
+	 */	
+	@Query("SELECT vet FROM Vet vet WHERE vet.id =:id")
+	public Vet findById(@Param("id") int id);
 
 }
