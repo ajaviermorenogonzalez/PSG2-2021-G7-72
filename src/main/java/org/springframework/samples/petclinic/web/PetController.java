@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 import java.util.Collection;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.BeanUtils;
@@ -47,7 +48,7 @@ import org.springframework.samples.petclinic.service.exceptions.DuplicatedPetNam
 @Controller
 @RequestMapping("/owners/{ownerId}")
 public class PetController {
-
+	public static final String OWNERS_LISTING ="/owners/OwnersLists";
 	private static final String VIEWS_PETS_CREATE_OR_UPDATE_FORM = "pets/createOrUpdatePetForm";
 
 	private final PetService petService;
@@ -150,5 +151,20 @@ public class PetController {
 			return "redirect:/owners/{ownerId}";
 		}
 	}
+        
+        @GetMapping("pets/{petId}/delete")
+    	public String deletePet(@PathVariable("petId") int petId, ModelMap model) {
+    		Optional<Pet> pet = petService.findById(petId);
+    		if(pet.isPresent()) {
+    			petService.delete(pet.get());
+    			model.addAttribute("message", "The pet was deleted successfully.");
+    			return "redirect:/owners/find";
+    		}else {
+    			model.addAttribute("message", "We could not find the pet you are trying to delete.");
+    			return "owners/findOwners";
+    		}
+    	}
+    
+    	
 
 }

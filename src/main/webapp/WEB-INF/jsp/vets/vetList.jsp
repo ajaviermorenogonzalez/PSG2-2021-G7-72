@@ -26,10 +26,13 @@
                     </c:forEach>
                     <c:if test="${vet.nrOfSpecialties == 0}">none</c:if>
                 </td>
-            </tr>
+                
+            
         </c:forEach>
         </tbody>
     </table>
+    
+    
 
     <table class="table-buttons">
         <tr>
