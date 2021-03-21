@@ -16,9 +16,11 @@
 package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.stereotype.Service;
@@ -59,5 +61,17 @@ public class VetService {
 	public void saveVet(Vet vet) throws DataAccessException {
 		//creating vet
 		vetRepository.save(vet);
+	}
+	
+	@Transactional
+	public Optional<Vet> findById(Integer id) {
+		return vetRepository.findById(id);
+	}
+	
+	public void delete(Vet v) {
+		
+		vetRepository.deleteById(v.getId());
+		
+
 	}
 }

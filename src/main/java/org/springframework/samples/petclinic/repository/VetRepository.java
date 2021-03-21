@@ -37,14 +37,14 @@ import org.springframework.samples.petclinic.model.Vet;
  * @author Sam Brannen
  * @author Michael Isvy
  */
-public interface VetRepository extends Repository<Vet, Integer>{
+public interface VetRepository extends Repository<Vet, Integer>,CrudRepository<Vet, Integer>{
 
 	/**
 	 * Save an <code>Vet</code> to the data store, either inserting or updating it.
 	 * @param vet the <code>Vet</code> to save
 	 * @see BaseEntity#isNew
 	 */
-	void save(Vet vet) throws DataAccessException;
+//	void save(Vet vet) throws DataAccessException;
 	
 	/**
 	 * Retrieve all <code>Vet</code>s from the data store.

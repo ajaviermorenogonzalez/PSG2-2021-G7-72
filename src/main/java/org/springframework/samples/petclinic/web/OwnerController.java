@@ -151,7 +151,7 @@ public class OwnerController {
 			return "redirect:/owners/find";
 		}else {
 			model.addAttribute("message", "We could not find the owner you are trying to delete.");
-			return "owners/findOwners";
+			return "redirect:/owners/find";
 		}
 	}
 
