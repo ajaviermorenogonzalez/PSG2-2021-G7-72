@@ -44,6 +44,8 @@ public class PetService {
 	
 	private VisitRepository visitRepository;
 	
+	
+	
 
 	@Autowired
 	public PetService(PetRepository petRepository,
@@ -88,7 +90,6 @@ public class PetService {
 
 	
 	public void delete(Pet p) {
-		
 		petRepository.deleteById(p.getId());
 		
 

@@ -46,7 +46,7 @@ public class PetController {
 	private static final String VIEWS_PETS_CREATE_OR_UPDATE_FORM = "pets/createOrUpdatePetForm";
 
 	private final PetService petService;
-        private final OwnerService ownerService;
+    private final OwnerService ownerService;
 
 	@Autowired
 	public PetController(PetService petService, OwnerService ownerService) {
@@ -147,9 +147,12 @@ public class PetController {
 	}
         
         @GetMapping("pets/{petId}/delete")
-    	public String deletePet(@PathVariable("petId") int petId, ModelMap model) {
+    	public String deletePet(@PathVariable("petId") int petId,@PathVariable("ownerId") int ownerId, ModelMap model) {
     		Optional<Pet> pet = petService.findById(petId);
+    		Optional<Owner> owner = ownerService.findById(ownerId);
     		if(pet.isPresent()) {
+    			Pet newPet=pet.get();
+    			owner.get().removePet(newPet);
     			petService.delete(pet.get());
     			model.addAttribute("message", "The pet was deleted successfully.");
     			return "redirect:/owners/{ownerId}";
