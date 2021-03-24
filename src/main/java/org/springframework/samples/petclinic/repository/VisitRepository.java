@@ -17,10 +17,8 @@ package org.springframework.samples.petclinic.repository;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.samples.petclinic.model.BaseEntity;
 import org.springframework.samples.petclinic.model.Visit;
 
@@ -45,6 +43,5 @@ public interface VisitRepository extends Repository<Visit, Integer>,CrudReposito
 //	void save(Visit visit) throws DataAccessException;
 
 	List<Visit> findByPetId(Integer petId);
-	public Visit findById( int id);
 	
 }

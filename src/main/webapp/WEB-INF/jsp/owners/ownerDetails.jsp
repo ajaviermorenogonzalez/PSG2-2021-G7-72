@@ -73,14 +73,16 @@
                         </thead>
                         <c:forEach var="visit" items="${pet.visits}">
                             <tr>  
-                            <spring:url value="/owners/{ownerId}/pets/{petId}/visits/{visitId}" var="visitDetailsUrl">
+                            <td><petclinic:localDate date="${visit.date}" pattern="yyyy-MM-dd"/></td>
+                             <td><c:out value="${visit.description}"/></td>
+                             
+                            <spring:url value="/owners/{ownerId}/pets/{petId}/visits/{visitId}/delete" var="visitDetailsUrl">
+                             <spring:param name="ownerId" value="${owner.id}"/>
                              <spring:param name="petId" value="${pet.id}"/>
                         	<spring:param name="visitId" value="${visit.id}"/>
                    			 </spring:url>
-                   			 <td>
-                   		 <a href="${fn:escapeXml(visitDetailsUrl)}"><petclinic:localDate date="${visit.date}" pattern="yyyy-MM-dd"/></a>
-                   		 </td>
-                                <td><c:out value="${visit.description}"/></td>
+                   		<td>
+                   		 <a href="${fn:escapeXml(visitDetailsUrl)}">Delete Visit</a>
                             </tr>
                         </c:forEach>
                         <tr>

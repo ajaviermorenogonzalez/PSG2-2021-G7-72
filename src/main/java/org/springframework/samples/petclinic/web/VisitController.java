@@ -15,26 +15,20 @@
  */
 package org.springframework.samples.petclinic.web;
 
-import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.Visit;
-import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.service.PetService;
-import org.springframework.samples.petclinic.service.VetService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author Juergen Hoeller
@@ -43,7 +37,6 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Michael Isvy
  */
 @Controller
-@RequestMapping("owners/{ownerId}/pets/{petId}")
 public class VisitController {
 
 	private final PetService petService;
@@ -75,13 +68,13 @@ public class VisitController {
 	}
 
 	// Spring MVC calls method loadPetWithVisit(...) before initNewVisitForm is called
-	@GetMapping(value = "/visits/new")
+	@GetMapping(value = "/owners/*/pets/{petId}/visits/new")
 	public String initNewVisitForm(@PathVariable("petId") int petId, Map<String, Object> model) {
 		return "pets/createOrUpdateVisitForm";
 	}
 
 	// Spring MVC calls method loadPetWithVisit(...) before processNewVisitForm is called
-	@PostMapping(value = "/visits/new")
+	@PostMapping(value = "/owners/{ownerId}/pets/{petId}/visits/new")
 	public String processNewVisitForm(@Valid Visit visit, BindingResult result) {
 		if (result.hasErrors()) {
 			return "pets/createOrUpdateVisitForm";
@@ -92,27 +85,22 @@ public class VisitController {
 		}
 	}
 
-	@GetMapping(value = "/visits")
+	@GetMapping(value = "/owners/*/pets/{petId}/visits")
 	public String showVisits(@PathVariable int petId, Map<String, Object> model) {
 		model.put("visits", this.petService.findPetById(petId).getVisits());
 		return "visitList";
 	}
+
+
+
 	
-	@GetMapping(value = "/visits/{visitId}")
-	public ModelAndView showVisit(@PathVariable("visitId") int visitId,Map<String, Object> model) {
-		ModelAndView mav = new ModelAndView("pets/visitList");
-//		mav.addObject(this.petService.findPetById(petId).getVisits());
-		mav.addObject(this.petService.findVisitById(visitId));
-		return mav;
-	}
-	
-	@GetMapping(value = "visits/{visitId}/delete")
+	@GetMapping(value = "/owners/{ownerId}/pets/{petId}/visits/{visitId}/delete")
   	public String deleteVisit(@PathVariable("visitId") int visitId,ModelMap model) {
   		Optional<Visit> visit = petService.findByIdVisit(visitId);
   		if(visit.isPresent()) {
-//  			petService.deleteVisit(visit.get());
+  			petService.deleteVisit(visit.get());
   			model.addAttribute("message", "The pet was deleted successfully.");
-  			return "redirect:/owners/{ownerId}";
+  			return "redirect:/owners";
   		}else {
   			model.addAttribute("message", "We could not find the pet you are trying to delete.");
   			return "redirect:/owners/{ownerId}";
