@@ -115,7 +115,7 @@ public class VetController {
 	}
 	
 	@GetMapping(value="/vets/{vetId}/delete")
-	public String deleteOwner(@PathVariable("vetId") int vetId, ModelMap model) {
+	public String deleteVet(@PathVariable("vetId") int vetId, ModelMap model) {
 		Optional<Vet> vet = vetService.findById(vetId);
 		if(vet.isPresent()) {
 			vetService.delete(vet.get());
