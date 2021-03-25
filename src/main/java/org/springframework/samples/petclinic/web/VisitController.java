@@ -16,6 +16,7 @@
 package org.springframework.samples.petclinic.web;
 
 import java.util.Map;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -23,8 +24,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.service.PetService;
-import org.springframework.samples.petclinic.service.VetService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -90,4 +91,22 @@ public class VisitController {
 		return "visitList";
 	}
 
+
+
+	
+	@GetMapping(value = "/owners/{ownerId}/pets/{petId}/visits/{visitId}/delete")
+  	public String deleteVisit(@PathVariable("visitId") int visitId,ModelMap model) {
+  		Optional<Visit> visit = petService.findByIdVisit(visitId);
+  		if(visit.isPresent()) {
+  			petService.deleteVisit(visit.get());
+  			model.addAttribute("message", "The pet was deleted successfully.");
+  			return "redirect:/owners";
+  		}else {
+  			model.addAttribute("message", "We could not find the pet you are trying to delete.");
+  			return "redirect:/owners/{ownerId}";
+  		}
+  	}
+	
+	
+  
 }
