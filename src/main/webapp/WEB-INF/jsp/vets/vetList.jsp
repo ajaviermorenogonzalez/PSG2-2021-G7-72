@@ -6,13 +6,13 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <petclinic:layout pageName="vets">
-    <h2>Veterinarians</h2>
+    <h2><spring:message code = "veterinarians"/></h2>
 
     <table id="vetsTable" class="table table-striped">
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Specialties</th>
+            <th><spring:message code = "firstName"/></th>
+            <th><spring:message code = "specialties"/></th>
         </tr>
         </thead>
         <tbody>
@@ -43,7 +43,8 @@
     <table class="table-buttons">
         <tr>
             <td>
-                <a href="<spring:url value="/vets.xml" htmlEscape="true" />">View as XML</a>
+
+               <a href="<spring:url value="/vets.xml" htmlEscape="true" />"><spring:message code = "viewAsXml"/></a>
             </td>  
             
             <td>
@@ -52,7 +53,7 @@
 						<a class="btn btn-default" href='<spring:url value="/vets/new" htmlEscape="true"/>'>Add Vet</a>
 					</sec:authorize>
 				</div>
-            </td>           
+
         </tr>
     </table>
     
