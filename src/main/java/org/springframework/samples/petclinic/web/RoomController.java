@@ -19,11 +19,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/room/{roomId}")
+//@RequestMapping("/room/{roomId}")
 public class RoomController {
 	
 	private static final String ROOMS_FORM = "rooms/createOrUpdateRoomForm";
-	public static final String ROOMS_LISTING ="/rooms/RoomsListing";
+	public static final String ROOMS_LISTING ="rooms/RoomsListing";
 	
 	@Autowired
 	private final RoomService roomService;
@@ -39,13 +39,13 @@ public class RoomController {
 		this.petService = petService;
 	}
     
-    @GetMapping
+    @GetMapping(value = "/rooms")
 	public String roomsListing(ModelMap model) {
 		model.addAttribute("rooms", roomService.findAll());
 		return ROOMS_LISTING;
 	}
     
-    @GetMapping(value = "/new")
+    @GetMapping(value = "/rooms/new") //Select owner
 	public String initCreationForm(ModelMap model) {
 		Room room = new Room();
 		model.addAttribute("room", room);
@@ -54,7 +54,7 @@ public class RoomController {
 		return ROOMS_FORM;
 	}
 
-	@PostMapping(value = "/new")
+	@PostMapping(value = "/rooms/new")
 	public String processCreationForm(@Valid Room room, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
 			model.put("room", room);
@@ -69,7 +69,7 @@ public class RoomController {
 		}
 	}
 	
-	@GetMapping("/{id}/edit")
+	@GetMapping("/rooms/{id}/edit")
 	public String editRoom(@PathVariable("id") int id,ModelMap model) {
 		Optional<Room> room = roomService.findById(id);
 		if(room.isPresent()) {
@@ -84,7 +84,7 @@ public class RoomController {
 	}
 	
 	
-	@PostMapping("/{id}/edit")
+	@PostMapping("/rooms/{id}/edit")
 	public String editRoom(@PathVariable("id") int id,@Valid Room modifiedRoom, BindingResult binding,ModelMap model) {
 		Optional<Room> room = roomService.findById(id);
 		if(binding.hasErrors()) {
@@ -97,7 +97,7 @@ public class RoomController {
 		}
 	}
 	
-	@GetMapping("/{id}/delete")
+	@GetMapping("/rooms/{id}/delete")
 	public String deleteRoom(@PathVariable("id") int id, ModelMap model) {
 		Optional<Room> room = roomService.findById(id);
 		if(room.isPresent()) {
