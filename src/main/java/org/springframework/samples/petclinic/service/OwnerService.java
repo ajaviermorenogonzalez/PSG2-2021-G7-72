@@ -16,6 +16,7 @@
 package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -51,10 +52,15 @@ public class OwnerService {
 	@Autowired
 	private AuthoritiesService authoritiesService;
 
-	@Autowired
-	public OwnerService(OwnerRepository ownerRepository) {
+	
+
+	public OwnerService(OwnerRepository ownerRepository, UserService userService,
+			AuthoritiesService authoritiesService) {
+		super();
 		this.ownerRepository = ownerRepository;
-	}	
+		this.userService = userService;
+		this.authoritiesService = authoritiesService;
+	}
 
 	@Transactional(readOnly = true)
 	public Owner findOwnerById(int id) throws DataAccessException {
@@ -80,5 +86,15 @@ public class OwnerService {
 	public Collection<Owner> findAll() {
 		return ownerRepository.findAll();
 	}
-
+	
+	
+	public void delete(Owner o) {
+		ownerRepository.findById(o.getId()).get().setUser(null);
+		ownerRepository.deleteById(o.getId());
+	}
+  
+	@Transactional
+	public Optional<Owner> findById(Integer id) {
+		return ownerRepository.findById(id);
+	}
 }

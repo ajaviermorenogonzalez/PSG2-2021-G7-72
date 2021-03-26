@@ -19,10 +19,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
-import org.springframework.samples.petclinic.service.VetService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -30,11 +28,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 import java.util.Collection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Optional;
 import org.springframework.beans.BeanUtils;
-import org.springframework.dao.DataAccessException;
-import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.service.OwnerService;
 import org.springframework.samples.petclinic.service.PetService;
 import org.springframework.samples.petclinic.service.exceptions.DuplicatedPetNameException;
@@ -47,11 +42,11 @@ import org.springframework.samples.petclinic.service.exceptions.DuplicatedPetNam
 @Controller
 @RequestMapping("/owners/{ownerId}")
 public class PetController {
-
+	public static final String OWNERS_LISTING ="/owners/OwnersLists";
 	private static final String VIEWS_PETS_CREATE_OR_UPDATE_FORM = "pets/createOrUpdatePetForm";
 
 	private final PetService petService;
-        private final OwnerService ownerService;
+    private final OwnerService ownerService;
 
 	@Autowired
 	public PetController(PetService petService, OwnerService ownerService) {
@@ -150,5 +145,23 @@ public class PetController {
 			return "redirect:/owners/{ownerId}";
 		}
 	}
+        
+        @GetMapping("pets/{petId}/delete")
+    	public String deletePet(@PathVariable("petId") int petId,@PathVariable("ownerId") int ownerId, ModelMap model) {
+    		Optional<Pet> pet = petService.findById(petId);
+    		Optional<Owner> owner = ownerService.findById(ownerId);
+    		if(pet.isPresent()) {
+    			Pet newPet=pet.get();
+    			owner.get().removePet(newPet);
+    			petService.delete(pet.get());
+    			model.addAttribute("message", "The pet was deleted successfully.");
+    			return "redirect:/owners/{ownerId}";
+    		}else {
+    			model.addAttribute("message", "We could not find the pet you are trying to delete.");
+    			return "redirect:/owners/{ownerId}";
+    		}
+    	}
+    
+    	
 
 }

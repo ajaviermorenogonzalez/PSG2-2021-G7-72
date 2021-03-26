@@ -16,6 +16,9 @@
 package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -26,7 +29,6 @@ import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
 import org.springframework.samples.petclinic.service.exceptions.DuplicatedPetNameException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 /**
@@ -42,6 +44,8 @@ public class PetService {
 	
 	private VisitRepository visitRepository;
 	
+	
+	
 
 	@Autowired
 	public PetService(PetRepository petRepository,
@@ -50,7 +54,7 @@ public class PetService {
 		this.visitRepository = visitRepository;
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	public Collection<PetType> findPetTypes() throws DataAccessException {
 		return petRepository.findPetTypes();
 	}
@@ -60,12 +64,11 @@ public class PetService {
 		visitRepository.save(visit);
 	}
 
-	@Transactional(readOnly = true)
 	public Pet findPetById(int id) throws DataAccessException {
 		return petRepository.findById(id);
 	}
 
-	@Transactional(rollbackFor = DuplicatedPetNameException.class)
+	@Transactional(rollbackOn = DuplicatedPetNameException.class)
 	public void savePet(Pet pet) throws DataAccessException, DuplicatedPetNameException {
 			Pet otherPet=pet.getOwner().getPetwithIdDifferent(pet.getName(), pet.getId());
             if (StringUtils.hasLength(pet.getName()) &&  (otherPet!= null && otherPet.getId()!=pet.getId())) {            	
@@ -80,8 +83,28 @@ public class PetService {
 	}
 	
 	@Transactional
+
 	public Collection<Pet> findAll() {
 		return petRepository.findAll();
 	}
+  
+	public Optional<Pet> findById(Integer id) {
+		return petRepository.findById(id);
+	}
+	
+	public void delete(Pet p) {
+		petRepository.deleteById(p.getId());
+	}
+	
+	@Transactional
+	public Optional<Visit> findByIdVisit(Integer id) {
+		return visitRepository.findById(id);
+	}
+	
+	public void deleteVisit(Visit v) {
+		
+		visitRepository.deleteById(v.getId());
+	}
+	
 
 }
