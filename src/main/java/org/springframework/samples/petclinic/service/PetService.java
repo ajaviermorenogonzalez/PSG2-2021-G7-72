@@ -44,9 +44,6 @@ public class PetService {
 	
 	private VisitRepository visitRepository;
 	
-	
-	
-
 	@Autowired
 	public PetService(PetRepository petRepository,
 			VisitRepository visitRepository) {
@@ -73,10 +70,10 @@ public class PetService {
 			Pet otherPet=pet.getOwner().getPetwithIdDifferent(pet.getName(), pet.getId());
             if (StringUtils.hasLength(pet.getName()) &&  (otherPet!= null && otherPet.getId()!=pet.getId())) {            	
             	throw new DuplicatedPetNameException();
-            }else
+            }else {
                 petRepository.save(pet);                
 	}
-
+	}
 
 	public Collection<Visit> findVisitsByPetId(int petId) {
 		return visitRepository.findByPetId(petId);

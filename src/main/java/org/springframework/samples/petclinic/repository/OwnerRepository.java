@@ -16,14 +16,10 @@
 package org.springframework.samples.petclinic.repository;
 
 import java.util.Collection;
-import java.util.Optional;
-
-import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.samples.petclinic.model.BaseEntity;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 
@@ -52,9 +48,6 @@ public interface OwnerRepository extends Repository<Owner, Integer>,CrudReposito
 	@Query("SELECT DISTINCT owner FROM Owner owner left join fetch owner.pets WHERE owner.lastName LIKE :lastName%")
 	public Collection<Owner> findByLastName(@Param("lastName") String lastName);
 	
-	Collection<Owner> findAll();
-
-
 	/**
 	 * Retrieve an <code>Owner</code> from the data store by id.
 	 * @param id the id to search for
