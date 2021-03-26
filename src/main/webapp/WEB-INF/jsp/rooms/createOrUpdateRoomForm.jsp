@@ -29,18 +29,6 @@
                 <petclinic:inputField label="First Date" name="firstDate"/>
                 <petclinic:inputField label="Last Date" name="lastDate"/>
                 
-                <%-- <div class="control-group">
-                    <petclinic:selectField name="owner" label="Owner " names="${owner}" size="5"/>
-                </div> 
-                
-                 <div class="control-group">
-                    <petclinic:selectField name="pet" label="Pet " names="${pet}" size="5"/>
-                </div>
-                
-                --%>
-                
-                
-                
                  <div class="control-group">
                  <label for="selectOwner">Choose an Owner</label>
                  <form:select id="selectOwner" class="form-control" path="owner" label= "Owner " size="5">
