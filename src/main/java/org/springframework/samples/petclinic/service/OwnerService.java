@@ -80,21 +80,21 @@ public class OwnerService {
 		userService.saveUser(owner.getUser());
 		//creating authorities
 		authoritiesService.saveAuthorities(owner.getUser().getUsername(), "owner");
+	}	
+	
+	@Transactional
+	public Collection<Owner> findAll() {
+		return ownerRepository.findAll();
 	}
 	
 	
 	public void delete(Owner o) {
-		
 		ownerRepository.findById(o.getId()).get().setUser(null);
 		ownerRepository.deleteById(o.getId());
-		
-
 	}
+  
 	@Transactional
 	public Optional<Owner> findById(Integer id) {
 		return ownerRepository.findById(id);
 	}
-	
-	
-
 }

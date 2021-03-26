@@ -83,16 +83,17 @@ public class PetService {
 	}
 	
 	@Transactional
+
+	public Collection<Pet> findAll() {
+		return petRepository.findAll();
+	}
+  
 	public Optional<Pet> findById(Integer id) {
 		return petRepository.findById(id);
 	}
 	
-
-	
 	public void delete(Pet p) {
 		petRepository.deleteById(p.getId());
-		
-
 	}
 	
 	@Transactional
@@ -100,14 +101,10 @@ public class PetService {
 		return visitRepository.findById(id);
 	}
 	
-
 	public void deleteVisit(Visit v) {
 		
 		visitRepository.deleteById(v.getId());
-		
-
 	}
-	
 	
 
 }

@@ -15,6 +15,7 @@
  */
 package org.springframework.samples.petclinic.repository;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,6 +57,7 @@ public interface PetRepository extends Repository<Pet, Integer>,CrudRepository<P
 	 * @param pet the <code>Pet</code> to save
 	 * @see BaseEntity#isNew
 	 */
-
-
+	void save(Pet pet) throws DataAccessException;
+	
+	Collection<Pet> findAll();
 }
