@@ -12,7 +12,7 @@
             <img class="img-responsive" src="${petsImage}"/>
         </div>
     </div>
-    <div style="padding: 10px; border: 1px solid gray;">
+    <div style="padding: 10px;">
     	<a href="?lang=es">Spanish</a>
     	<a href="?lang=en">English</a>
 	</div>
