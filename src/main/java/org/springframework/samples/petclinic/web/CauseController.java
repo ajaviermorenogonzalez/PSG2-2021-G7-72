@@ -27,29 +27,31 @@ public class CauseController {
 	public String list(ModelMap model) {
 		Collection<Cause> causes=causeService.findAll();
 		model.addAttribute("causes",causes);
-		return "causes/causesList";
+		return "causes/listCauses";
 	}
 	
 	@GetMapping("/{id}")
 	public String showCause(@PathVariable("id") int id,ModelMap model) {
 		Optional<Cause> cause=causeService.findById(id);
 		model.addAttribute("cause",cause.get());
-		return "causes/causesDetails";
+		model.addAttribute("donations",cause.get().getDonations());
+		return "causes/showCause";
 	}
 	
 	@GetMapping("/new")
 	public String newCause(ModelMap model) {
 		Cause cause=new Cause();
 		model.addAttribute("cause",cause);
-		return "causes/createCause";
-		
+		return "causes/createCause";	
 	}
-	@PostMapping("/{id}")
+	@PostMapping("/new")
 	public String saveCause(@Valid Cause cause,BindingResult result,ModelMap model) {
 		if (result.hasErrors()) {
+			model.addAttribute("cause", cause);
+			model.addAttribute("message", "La causa no se ha podido crear correctamente");
 			return "causes/createCause";
 		}else {
-			cause.setBudgetAchieved(0);
+			cause.setTotalBudgetAchived(0.0);
 			causeService.save(cause);
 			model.addAttribute("message","The cause has been saved");
 			return list(model);
