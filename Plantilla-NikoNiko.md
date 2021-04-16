@@ -12,10 +12,10 @@
 
 ## Sprint Template PSG2-2021-g-72
 
-| Day                     | FranciscoJRE14  | antoniorgn4    |       siadan     |     FraniBL     | DiegoHill      |
+| Day                     | FranciscoJRE14  | antmorgon4     |       siadan     |     FraniBL     | DiegoHill      |
 | -------------           | -------------   | -------------  | -------------    | -------------   | -------------  | 
 | Day 1  12/04/2021       | :smile:         |                |                  |                 |                |               
-| Day 2                   |                 |                |                  |                 |                |                
+| Day 2  16/04/2021       |                 | :smile:        |                  |                 |                |                
 | Day 3                   |                 |                |                  |                 |                |                
 | Day 4                   |                 |                |                  |                 |                |              
 ...
