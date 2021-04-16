@@ -50,6 +50,9 @@ public class Pet extends NamedEntity {
 	@Column(name = "birth_date")
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private LocalDate birthDate;
+	
+	@Column(name = "in_adoption")
+	private boolean inAdoption;
 
 	@ManyToOne
 	@JoinColumn(name = "type_id")
@@ -66,7 +69,8 @@ public class Pet extends NamedEntity {
 //	@JoinColumn(name="room_id")
 	private Room room;
 	
-	
+	@OneToOne(mappedBy = "pet")
+	private AdoptionApplication adoptionApplication;
 
 	public Room getRoom() {
 		return room;
