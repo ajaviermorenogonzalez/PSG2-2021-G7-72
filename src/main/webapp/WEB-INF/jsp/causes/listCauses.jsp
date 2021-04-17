@@ -23,7 +23,21 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
 				<tr>
 					<td><c:out value="${cause.name}" /></td>
 					<td><c:out value="${cause.budgetTarget}" /></td>
-					<td><c:out value="${cause.totalBudgetAchived}" /></td>
+					<td>
+					
+						<c:choose>
+							<c:when test="${cause.totalBudgetAchived == 0.0}">
+							<spring:message code="beFirst" />
+							</c:when>
+							<c:otherwise>
+						<div class = "progress">
+							<div id = "progressBar" class= "progress-bar bg-info" style="width: ${cause.totalBudgetAchived*100/cause.budgetTarget}% ; max-width : 100%" role = "progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100">
+						${Math.round(cause.totalBudgetAchived*100/cause.budgetTarget)}%
+							</div>
+						</div>
+							</c:otherwise>
+						</c:choose>
+					</td>
 					<td><c:choose>
 							<c:when test="${cause.isClosed}">
 								<spring:message code="goalAchieved" />
@@ -53,5 +67,5 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
 	<a class="btn btn-default"
 		href='<spring:url value="/causes/new" htmlEscape="true"/>'><spring:message code="addCause" /></a>
 
-
+	
 </petclinic:layout>

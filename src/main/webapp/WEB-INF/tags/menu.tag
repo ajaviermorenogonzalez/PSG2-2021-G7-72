@@ -8,7 +8,7 @@
 	description="Name of the active menu: home, owners, vets or error"%>
 
 <nav class="navbar navbar-default" role="navigation">
-	<div class="container">
+	<div>
 		<div class="navbar-header">
 			<a class="navbar-brand"
 				href="<spring:url value="/" htmlEscape="true" />"><span></span></a>
@@ -24,7 +24,7 @@
 
 				<petclinic:menuItem active="${name eq 'home'}" url="/"
 					title="home page">
-					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span class="gslyphicon glyphicon-home" aria-hidden="true"></span>
 					<span><spring:message code = "home"></spring:message></span>
 				</petclinic:menuItem>
 
@@ -58,14 +58,7 @@
 					<span><spring:message code = "error"></spring:message></span>
 				</petclinic:menuItem>
 				
-
-			</ul>
-
-
-
-
-			<ul class="nav navbar-nav navbar-right">
-				<sec:authorize access="!isAuthenticated()">
+					<sec:authorize access="!isAuthenticated()">
 					<li><a href="<c:url value="/login" />"><spring:message code = "login"></spring:message></a></li>
 					<li><a href="<c:url value="/users/new" />"><spring:message code = "register"></spring:message></a></li>
 				</sec:authorize>
@@ -89,35 +82,18 @@
 												<strong><sec:authentication property="name" /></strong>
 											</p>
 											<p class="text-left">
-												<a href="<c:url value="/logout" />"
-													class="btn btn-primary btn-block btn-sm">Logout</a>
+												<a href="<c:url value="/logout" />"class="btn btn-primary btn-block btn-sm">Logout</a>
 											</p>
 										</div>
 									</div>
 								</div>
 							</li>
 							<li class="divider"></li>
-<!-- 							
-                            <li> 
-								<div class="navbar-login navbar-login-session">
-									<div class="row">
-										<div class="col-lg-12">
-											<p>
-												<a href="#" class="btn btn-primary btn-block">My Profile</a>
-												<a href="#" class="btn btn-danger btn-block">Change
-													Password</a>
-											</p>
-										</div>
-									</div>
-								</div>
-							</li>
--->
 						</ul></li>
 				</sec:authorize>
 			</ul>
+
 		</div>
-
-
 
 	</div>
 </nav>
