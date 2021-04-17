@@ -35,7 +35,7 @@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 			</h3>
 		</div>
 
-		<button class="btn btn-default" type="submit">Add Cause</button>
+		<button class="btn btn-default" type="submit"><spring:message code="addCause" /></button>
 
 	</form:form>
 </petclinic:layout>

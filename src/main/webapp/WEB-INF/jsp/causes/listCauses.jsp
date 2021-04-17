@@ -5,18 +5,17 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <%@ taglib
 prefix="petclinic" tagdir="/WEB-INF/tags" %> <%@ taglib prefix="fn"
 uri="http://java.sun.com/jsp/jstl/functions" %>
 
-
 <petclinic:layout pageName="causes">
-	<h2>Causes</h2>
+	<h2><spring:message code="listCauses" /></h2>
 
 	<table id="roomsTable" class="table table-striped">
 		<thead>
 			<tr>
-				<th>Name</th>
-				<th>Budget Target</th>
-				<th>Total Budget Achieved</th>
-				<th>Make a Donation</th>
-				<th>See Details</th>
+				<th><spring:message code="name" /></th>
+				<th><spring:message code="budgetTarget" /></th>
+				<th><spring:message code="totalBudgetAchieved" /></th>
+				<th><spring:message code="makeDonation" /></th>
+				<th><spring:message code="seeDetails" /></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -27,8 +26,7 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
 					<td><c:out value="${cause.totalBudgetAchived}" /></td>
 					<td><c:choose>
 							<c:when test="${cause.isClosed}">
-								<c:out value="¡ Hemos alcanzado la meta !">
-								</c:out>
+								<spring:message code="goalAchieved" />
 							</c:when>
 							<c:otherwise>
 
@@ -36,14 +34,14 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
 									<spring:param name="causeId" value="${cause.id}" />
 								</spring:url>
 
-								<a href="${fn:escapeXml(donationUrl)}"><c:out value="Donate" /></a>
+								<a href="${fn:escapeXml(donationUrl)}"><spring:message code="donate" /></a>
 
 							</c:otherwise>
 						</c:choose></td>
 					<td><spring:url value="/causes/{causeId}"
 							var="causeDetailsUrl">
 							<spring:param name="causeId" value="${cause.id}" />
-						</spring:url> <a href="${fn:escapeXml(causeDetailsUrl)}"><c:out value="DETAILS" /></a>
+						</spring:url> <a href="${fn:escapeXml(causeDetailsUrl)}"><spring:message code="details" /></a>
 					</td>
 				</tr>
 			</c:forEach>
@@ -53,8 +51,7 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
 	<br />
 
 	<a class="btn btn-default"
-		href='<spring:url value="/causes/new" htmlEscape="true"/>'>Create
-		Cause</a>
+		href='<spring:url value="/causes/new" htmlEscape="true"/>'><spring:message code="addCause" /></a>
 
 
 </petclinic:layout>

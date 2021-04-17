@@ -6,26 +6,20 @@
 
 <petclinic:layout pageName="causes">
 
-    <h2>Cause Details</h2>
+    <h2><spring:message code="cause" /> : <c:out value = "${cause.name}"> </c:out></h2>
 
-	<h3>Name</h3>
-	<c:out value = "${cause.name}"> </c:out>
+	<h3><spring:message code="description" /> : <c:out value = "${cause.description}"> </c:out> </h3>
 	
-	<h3>Description</h3>
-	<c:out value = "${cause.description}"> </c:out>
+	<h3><spring:message code="budgetTarget" /> : <c:out value = "${cause.budgetTarget}"> </c:out> </h3>
 	
-	<h3>Total Budget</h3>
-	<c:out value = "${cause.budgetTarget}"> </c:out>
-	
-	<h3>Total Achieved</h3>
-	<c:out value = "${cause.totalBudgetAchived}"> </c:out>
+	<h3><spring:message code="totalBudgetAchieved" /> : <c:out value = "${cause.totalBudgetAchived}"> </c:out> </h3>
 	
     <table id="roomsTable" class="table table-striped">
         <thead>
         <tr>
-            <th>Donor</th>
-            <th>Date</th>
-            <th>Amount</th>
+            <th><spring:message code="donor" /></th>
+            <th><spring:message code="date" /></th>
+            <th><spring:message code="amount" /></th>
         </tr>
         </thead>
         <tbody>
