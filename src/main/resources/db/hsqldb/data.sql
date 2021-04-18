@@ -65,3 +65,8 @@ INSERT INTO visits(id,pet_id,visit_date,description) VALUES (3, 8, '2013-01-03',
 
 INSERT INTO rooms(id,first_date,last_date,owner_id,pet_id) VALUES (1,'2010-09-07','2010-09-08',1,1);
 
+-- Causes
+
+INSERT INTO causes(id, budget_target, description, is_closed, name, organization, total_budget_achieved) VALUES (1, 3000.0, 'QUEREMOS COMPRAR MANTITAS PARA LOS GATITOS POBRES',FALSE, 'MANTAS PARA GATOS', 'GATITOS SIN FRONTERAS', 0.0);
+INSERT INTO causes(id, budget_target, description, is_closed, name, organization, total_budget_achieved) VALUES (2, 4500.0, 'ARROPEMOS A LOS PERIQUITOS CON FRIO', TRUE, 'ROPA PARA PERIQUITOS', 'PERIQUITOS SIN FRONTERAS', 5000.0);
+
