@@ -19,14 +19,11 @@ public class AdoptionApplication extends BaseEntity{
 	@NotEmpty
 	private String description;
 	
-	@OneToOne
-	@JoinColumn(name = "pet_id")
-	private Pet pet;
-	
 	@ManyToOne
 	@JoinColumn(name = "owner_id")
 	private Owner owner;
 
-	
+	@OneToOne(optional=false)
+	private AdoptionRequest adoptionRequest;
 	
 }
