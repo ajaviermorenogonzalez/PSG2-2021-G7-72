@@ -113,16 +113,49 @@
                                 <spring:url value="/adoptions/request/new/{petId}" var="adoptionUrl">
                                     <spring:param name="petId" value="${pet.id}"/>
                                 </spring:url>
-
                                 <a href="${fn:escapeXml(adoptionUrl)}"><spring:message code = "addAdoptionRequest"/></a>
-
+                            </td>
+                            <td>
+                                <spring:url value="/adoptions/request/{petId}" var="viewAdoptionRequest">
+                                    <spring:param name="petId" value="${pet.id}"/>
+                                </spring:url>
+                                <a href="${fn:escapeXml(viewAdoptionRequest)}">View Adoption Requests</a>
                             </td>
                         </tr>
                     </table>
                 </td>
-            </tr>
-
+        	</tr>
         </c:forEach>
+                       <tr>
+                <td valign="top">
+                	<h2>Your adoption request</h2>
+                	<table id="yourAdoptionTable" class="table table-striped">
+        				<thead>
+        					<tr>
+            					<th>Pet Name</th>
+            					<th>Description</th>
+            					<th>State</th>
+        					</tr>
+        				</thead>
+        				<tbody>
+        					<c:forEach items="${adoptionApplication}" var="adoptionPet">
+           						<tr>
+                					<td>
+                    					<c:out value="${adoptionPet.owner.firstName}  ${adoptionPet.owner.lastName}"/>
+               						</td>
+
+                					<td>
+                    					<c:out value="${adoptionPet.description}"/>
+                					</td>
+                					<td>
+                     					<c:out value="${adoptionPet.state}"/>           
+                					</td>
+           						</tr>
+       						</c:forEach>
+        				</tbody>
+    				</table>
+               	</td>
+            </tr>
     </table>
 
 </petclinic:layout>

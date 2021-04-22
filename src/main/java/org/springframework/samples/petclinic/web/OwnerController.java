@@ -15,14 +15,20 @@
  */
 package org.springframework.samples.petclinic.web;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.AdoptionApplication;
 import org.springframework.samples.petclinic.model.Owner;
+import org.springframework.samples.petclinic.model.State;
+import org.springframework.samples.petclinic.service.AdoptionService;
 import org.springframework.samples.petclinic.service.AuthoritiesService;
 import org.springframework.samples.petclinic.service.OwnerService;
 import org.springframework.samples.petclinic.service.UserService;
@@ -46,10 +52,12 @@ public class OwnerController {
 	private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
 
 	private final OwnerService ownerService;
+	private final AdoptionService adoptionService;
 
 	@Autowired
-	public OwnerController(OwnerService ownerService, UserService userService, AuthoritiesService authoritiesService) {
+	public OwnerController(OwnerService ownerService, UserService userService, AuthoritiesService authoritiesService, AdoptionService adoptionService) {
 		this.ownerService = ownerService;
+		this.adoptionService = adoptionService;
 	}
 
 	@InitBinder
@@ -136,10 +144,20 @@ public class OwnerController {
 	 * @return a ModelMap with the model attributes for the view
 	 */
 	@GetMapping("/owners/{ownerId}")
-	public ModelAndView showOwner(@PathVariable("ownerId") int ownerId) {
-		ModelAndView mav = new ModelAndView("owners/ownerDetails");
-		mav.addObject(this.ownerService.findOwnerById(ownerId));
-		return mav;
+	public String showOwner(@PathVariable("ownerId") int ownerId, ModelMap model) {
+		//mav.addObject(this.ownerService.findOwnerById(ownerId));
+		model.addAttribute("owner", this.ownerService.findOwnerById(ownerId));
+		Iterator<AdoptionApplication> allAdoption = adoptionService.findAll().iterator();
+		List<AdoptionApplication> adoptionPet = new ArrayList<>();
+		while(allAdoption.hasNext()) {
+			AdoptionApplication elemento = allAdoption.next();
+			if(elemento.getOwner().getId().equals(ownerId)) {
+				adoptionPet.add(elemento);
+			}
+		}
+		//mav.addObject(adoptionPet);
+		model.addAttribute("adoptionApplication", adoptionPet);
+		return "owners/ownerDetails";
 	}
 	@GetMapping("owners/{ownerId}/delete")
 	public String deleteOwner(@PathVariable("ownerId") int ownerId, ModelMap model) {

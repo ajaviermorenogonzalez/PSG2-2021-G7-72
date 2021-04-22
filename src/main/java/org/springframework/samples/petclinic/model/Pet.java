@@ -50,6 +50,9 @@ public class Pet extends NamedEntity {
 	@Column(name = "birth_date")
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private LocalDate birthDate;
+	
+	@Column(name = "in_adoption")
+	private boolean inAdoption;
 
 	@ManyToOne
 	@JoinColumn(name = "type_id")
@@ -67,7 +70,7 @@ public class Pet extends NamedEntity {
 	private Room room;
 	
 	@OneToOne(mappedBy = "pet")
-	private AdoptionRequest adoptionRequest;
+	private AdoptionApplication adoptionApplication;;
 
 	public Room getRoom() {
 		return room;
@@ -92,12 +95,20 @@ public class Pet extends NamedEntity {
 	public void setType(PetType type) {
 		this.type = type;
 	}
+	
+	public boolean getInAdoption() {
+		return this.inAdoption;
+	}
+	
+	public void setInAdoption(Boolean inAdoption) {
+		this.inAdoption = inAdoption;
+	}
 
 	public Owner getOwner() {
 		return this.owner;
 	}
 
-	protected void setOwner(Owner owner) {
+	public void setOwner(Owner owner) {
 		this.owner = owner;
 	}
 

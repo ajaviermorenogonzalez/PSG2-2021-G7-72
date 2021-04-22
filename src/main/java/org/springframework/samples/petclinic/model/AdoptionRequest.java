@@ -1,4 +1,4 @@
-package org.springframework.samples.petclinic.model;
+/*package org.springframework.samples.petclinic.model;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
@@ -18,4 +18,4 @@ public class AdoptionRequest extends BaseEntity{
 		super();
 	}
 
-}
+}*/
