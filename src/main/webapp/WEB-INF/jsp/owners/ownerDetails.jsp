@@ -110,7 +110,8 @@
 
                             </td>
                             <td>
-                                <spring:url value="/adoptions/request/new/{petId}" var="adoptionUrl">
+                                <spring:url value="/adoptions/request/owner/{ownerId}/pet/{petId}/new" var="adoptionUrl">
+                                    <spring:param name="ownerId" value="${owner.id}"/>
                                     <spring:param name="petId" value="${pet.id}"/>
                                 </spring:url>
                                 <a href="${fn:escapeXml(adoptionUrl)}"><spring:message code = "addAdoptionRequest"/></a>

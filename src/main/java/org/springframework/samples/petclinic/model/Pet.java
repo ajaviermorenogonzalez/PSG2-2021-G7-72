@@ -69,8 +69,8 @@ public class Pet extends NamedEntity {
 //	@JoinColumn(name="room_id")
 	private Room room;
 	
-	@OneToOne(mappedBy = "pet")
-	private AdoptionApplication adoptionApplication;;
+	@OneToMany(mappedBy = "pet")
+	private Set<AdoptionApplication> adoptionApplications;
 
 	public Room getRoom() {
 		return room;
