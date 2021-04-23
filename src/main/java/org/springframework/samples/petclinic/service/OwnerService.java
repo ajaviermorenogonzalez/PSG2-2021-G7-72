@@ -98,20 +98,4 @@ public class OwnerService {
 	public List<Owner> findByUser(User username) {
 		return ownerRepository.findByUser(username);
 	}
-	
-	public Integer getOwnerId() {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		Object sesion = auth.getPrincipal();
-		UserDetails us = null;
-		if (sesion instanceof UserDetails) {
-			us = (UserDetails) sesion;
-		}
-		String res = us.getUsername();		
-
-			Owner o = (ownerRepository.findAll().stream().filter(x -> x.getUser().getUsername().equals(res)))
-					.collect(Collectors.toList()).get(0);
-			Integer ownerId = o.getId();
-		return ownerId;
-
-	}
 }

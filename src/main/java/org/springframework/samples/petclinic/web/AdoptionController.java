@@ -104,7 +104,7 @@ public class AdoptionController {
 		}
 		else {
 			//creating application
-			int ownerId = ownerService.getOwnerId();
+			//int ownerId = ownerService.getOwnerId();
 			//Owner owner = ownerService.findById(ownerId).get();
 			Pet pet = petService.findById(petId).get();
 			application.setOwner(owner);
