@@ -75,18 +75,18 @@ public class AdoptionController {
 	}
 	
 	@GetMapping(value = "adoptions/application/pet/{petId}/new")
-	public String initCreationForm(@PathVariable("petId") int petId, ModelMap model) {
-		//Principal principal = request.getUserPrincipal();
-		//String username =  principal.getName();
-		//User  user = userService.findByUsername(username);
-		//Owner owner = ownerService.findByUser(user);
+	public String initCreationForm(HttpServletRequest request, @PathVariable("petId") int petId, ModelMap model) {
+		Principal principal = request.getUserPrincipal();
+		String username =  principal.getName();
+		User  user = userService.findByUsername(username);
 		AdoptionApplication application = new AdoptionApplication("Hola", null, new Pet(), new Owner());
-		//Owner owner = ownerService.findById(1).get();
+		//Owner owner = new Owner();
 		//Pet pet = petService.findById(petId).get();
 		//application.setOwner(owner);
 		//application.setPet(pet);
 		application.setState(State.revision);
 		//application.setOwner(owner);
+		model.addAttribute("owner", ownerService.findByUser(user));
 		model.addAttribute("application",application);
 		model.addAttribute("pet",petId);
 		
@@ -94,11 +94,11 @@ public class AdoptionController {
 	}
 	
 	@PostMapping(value = "adoptions/application/pet/{petId}/new")
-	public String processCreationForm(HttpServletRequest request, @PathVariable("petId") int petId, @ModelAttribute(name="application") AdoptionApplication application, @ModelAttribute(name="description") String description, BindingResult result) {
-		Principal principal = request.getUserPrincipal();
-		String username =  principal.getName();
-		User  user = userService.findByUsername(username);
-		Owner owner = ownerService.findByUser(user).get(0);
+	public String processCreationForm(HttpServletRequest request, @PathVariable("petId") int petId, @ModelAttribute(name="application") AdoptionApplication application, @ModelAttribute(name="owner") Owner owner, @ModelAttribute(name="description") String description, BindingResult result) {
+		//Principal principal = request.getUserPrincipal();
+		//String username =  principal.getName();
+		//User  user = userService.findByUsername(username);
+		//Owner owner = ownerService.findByUser(user).get(0);
 		if (result.hasErrors()) {
 			return "adoptions/createApplicationForm";
 		}
