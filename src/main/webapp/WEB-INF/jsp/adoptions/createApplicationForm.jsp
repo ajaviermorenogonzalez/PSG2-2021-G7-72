@@ -15,14 +15,14 @@
     <form:form modelAttribute="application" class="form-horizontal" action="${applicationUrl}">
         <input type="hidden" name="id" value="${application.id}"/>
         <input type="hidden" name="state" value="${application.state}"/>
-        <label for="description">Description</label>
+        <label for="description"><spring:message code = "description"/></label>
         <div class="control-group">
         <input name="description" value="${description}"/>
         </div>
         
         <div class="control-group">
-        <label for="selectOwner">Owner</label>
-        <form:select id="selectOwner" class="form-control" path="owner" label= "Owner " size="5">
+        <label for="selectOwner"><spring:message code = "owner"/></label>
+        <form:select id="selectOwner" class="form-control" path="owner" label= "Owner " size="10">
         <c:forEach items="${owner}" var="o">
         	<c:set var="nameO" value="${o.firstName}"/>
            <form:option name="owner" value="${o}"> <c:out value="${nameO}"></c:out> </form:option>
@@ -31,9 +31,13 @@
         </div>
                  
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-            	<button class="btn btn-default" type="submit">Submit application</button>
-            </div>
+            <div class="row my-3">
+				<div class="col-lg-5"></div>
+				<div class="col-lg-2">
+            		<button class="btn mt-3 btn-default btn-block" type="submit"><spring:message code = "submitApplicatiion"/></button>
+            	 </div>
+            	 <div class="col-lg-5"></div>
+			</div>
         </div>
     </form:form>
     <c:if test="${!room['new']}">
