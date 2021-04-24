@@ -11,10 +11,10 @@
     <table id="petsTable" class="table table-striped">
         <thead>
         <tr>
-            <th style="width: 150px;"><spring:message code = "name"/></th>
+            <th style="width: 200px;"><spring:message code = "name"/></th>
             <th style="width: 200px;"><spring:message code = "birthDate"/></th>
-            <th><spring:message code = "type"/></th>
-            <th style="width: 120px"><spring:message code = "owner"/></th>
+            <th style="width: 200px;"><spring:message code = "type"/></th>
+            <th style="width: 200px"><spring:message code = "owner"/></th>
         </tr>
         </thead>
         <tbody>
