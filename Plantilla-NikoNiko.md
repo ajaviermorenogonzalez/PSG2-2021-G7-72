@@ -21,4 +21,5 @@
 | Day 5  22/04/2021       |                 |                | :smile:          |                 |                |  
 | Day 6  23/04/2021       |                 | :smile:        | :smile:          |                 | :neutral_face: |
 | Day 7  28/04/2021       |   :smile:       |                | :smile:          |                 |                |
+| Day 8  30/04/2021       |                 |                | :smile:          |                 |                |
 ...
