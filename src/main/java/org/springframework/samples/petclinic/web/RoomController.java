@@ -6,10 +6,13 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Room;
 import org.springframework.samples.petclinic.service.OwnerService;
 import org.springframework.samples.petclinic.service.PetService;
 import org.springframework.samples.petclinic.service.RoomService;
+import org.springframework.samples.petclinic.service.exceptions.DuplicatedPetNameException;
+import org.springframework.samples.petclinic.service.exceptions.DuplicatedRoomBookingException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -54,7 +57,7 @@ public class RoomController {
 	}
 
 	@PostMapping(value = "/rooms/new")
-	public String processCreationForm(@Valid Room room, BindingResult result, ModelMap model) {
+	public String processCreationForm(@Valid Room room, BindingResult result, ModelMap model) throws DataAccessException, DuplicatedRoomBookingException {
 		if (result.hasErrors()) {
 			model.put("room", room);
 			model.put("pet",petService.findAll());
@@ -62,9 +65,20 @@ public class RoomController {
 			return ROOMS_FORM;
 		}
 		else {
-			this.roomService.save(room);
-			model.addAttribute("message", "The room was created successfully.");
+			try{
+				this.roomService.validateAndSave(room);
+				model.addAttribute("message", "The room was created successfully.");
+            }catch(DuplicatedRoomBookingException ex){
+                result.rejectValue("pet", "duplicate", "already exists");
+                model.put("room", room);
+    			model.put("pet",petService.findAll());
+    			model.put("owner",ownerService.findAll());
+    			model.addAttribute("message", "La mascota que intenta registrar ya tiene una habitación reservada.");
+                return ROOMS_FORM;
+            }
 			return roomsListing(model);
+            
+			
 		}
 	}
 	
@@ -84,7 +98,7 @@ public class RoomController {
 	
 	
 	@PostMapping("/rooms/{id}/edit")
-	public String editRoom(@PathVariable("id") int id,@Valid Room modifiedRoom, BindingResult binding,ModelMap model) {
+	public String editRoom(@PathVariable("id") int id,@Valid Room modifiedRoom, BindingResult binding,ModelMap model) throws DataAccessException, DuplicatedPetNameException {
 		Optional<Room> room = roomService.findById(id);
 		if(binding.hasErrors()) {
 			return ROOMS_FORM;
