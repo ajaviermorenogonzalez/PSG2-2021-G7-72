@@ -15,6 +15,6 @@ public interface RoomRepository extends CrudRepository<Room, Integer> {
 	Collection<Room> findAll();
 	Optional<Room> findById(int id);
 	
-	@Query("SELECT pet FROM Room room WHERE room.pet=:pet")
-	public Optional<Integer> findPetInRoom(@Param("pet") Pet pet);
+	@Query("SELECT room FROM Room room WHERE room.pet=:pet")
+	public Collection<Room> findRoomsForPet(@Param("pet") Pet pet);
 }
