@@ -110,6 +110,7 @@ public class AdoptionController {
 			application.setOwner(owner);
 			application.setPet(pet);
 			application.setDescription(description);
+			application.setState(State.revision);
 			this.adoptionService.save(application);
 			
 			return "redirect:/adoptions/pets";
@@ -153,16 +154,17 @@ public class AdoptionController {
 				adoptionService.save(elemento);
 			}
 		}		
-		return "redirect:/adoptions/";
+		return "redirect:/adoptions/request/" + pet.getId();
 	}
 	
 	@GetMapping(value = "adoptions/request/false/{adoptionId}")
 	public String adoptionRequestFalse(@PathVariable("adoptionId") int adoptionId, ModelMap model) throws DataAccessException, DuplicatedPetNameException {
 		AdoptionApplication request = adoptionService.findById(adoptionId).get();
+		int petId = request.getPet().getId();
 		State state = State.rejected;
 		request.setState(state);
 		adoptionService.save(request);
-		return "redirect:/adoptions/";
+		return "redirect:/adoptions/request/" + petId;
 	}
 	
 	

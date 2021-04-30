@@ -33,7 +33,6 @@ public class AdoptionService {
    
 	@Transactional
     public void save(@Valid AdoptionApplication adoption) {
-		adoption.setState(State.revision);
 		adoptionRepository.save(adoption);
     }
 
