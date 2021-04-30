@@ -56,4 +56,13 @@ public interface PetRepository extends Repository<Pet, Integer>,CrudRepository<P
 	 */
 	
 	Collection<Pet> findAll();
+	
+	/**
+	 * Retrieve <code>Pet</code>s from the data which are available for adoption.
+	 * @param inAdoption Value to search for
+	 * @return a <code>Collection</code> of matching <code>Pets</code>s (or an empty
+	 * <code>Collection</code> if none found)
+	 */	
+	@Query("SELECT pet FROM Pet pet left join fetch pet.owner WHERE pet.inAdoption LIKE true")
+	public Collection<Pet> findAllInAdoption();
 }

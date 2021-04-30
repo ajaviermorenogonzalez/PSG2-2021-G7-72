@@ -100,6 +100,7 @@ public class PetController {
 		}
 		else {
                     try{
+                    	pet.setInAdoption(false);
                     	owner.addPet(pet);
                     	this.petService.savePet(pet);
                     }catch(DuplicatedPetNameException ex){

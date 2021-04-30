@@ -16,11 +16,14 @@
 package org.springframework.samples.petclinic.repository;
 
 import java.util.Collection;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.samples.petclinic.model.Owner;
+import org.springframework.samples.petclinic.model.User;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 
 /**
@@ -57,4 +60,6 @@ public interface OwnerRepository extends Repository<Owner, Integer>,CrudReposito
 	@Query("SELECT owner FROM Owner owner left join fetch owner.pets WHERE owner.id =:id")
 	public Owner findById(@Param("id") int id);
 	Collection<Owner> findAll();
+	
+	public List<Owner> findByUser(User username);
 }

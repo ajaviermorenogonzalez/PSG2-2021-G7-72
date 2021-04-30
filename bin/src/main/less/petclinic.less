@@ -20,13 +20,16 @@
 @spring-light-grey: #f1f1f1;
 @spring-light-red:  #ff7367;
 @spring-light-green:  #b3ffad;
+@spring-black:		#705f5f;
+@spring-red-violet:	#922b3e;
+@spring-brownish:	#b38130;
 
 @body-bg:                           @spring-light-grey;
 @text-color:                        @spring-brown;
-@link-color:                        @spring-dark-green;
-@link-hover-color:                  @spring-dark-green;
+@link-color:                        @spring-brownish;
+@link-hover-color:                  @spring-brownish;
 
-@navbar-default-link-color:         @spring-light-grey;
+@navbar-default-link-color:         @spring-red-violet;
 @navbar-default-link-active-color:  @spring-light-grey;
 @navbar-default-link-hover-color:   @spring-light-grey;
 @navbar-default-link-hover-bg:      @spring-light-red;
@@ -39,8 +42,8 @@
 @border-radius-small:            0;
 
 @btn-default-color:              @spring-light-grey;
-@btn-default-bg:                 @spring-brown;
-@btn-default-border:             @spring-green;
+@btn-default-bg:                 @spring-brownish;
+@btn-default-border:             @spring-brown;
 
 @nav-tabs-active-link-hover-color:        @spring-light-grey;
 @nav-tabs-active-link-hover-bg:           @spring-brown;
@@ -49,15 +52,18 @@
 
 @pagination-active-bg:                    @spring-brown;
 @pagination-active-border:                @spring-green;
-@table-border-color:                      @spring-brown;
+@table-border-color:                      @spring-brownish;
 
 .table > thead > tr > th {
-  background-color: lighten(@spring-brown, 3%);
+  background-color: lighten(@spring-brownish, 3%);
   color: @spring-light-grey;
+  font-size: 17px;
+  font-family: kiona;
+  color: #0000000;
 }
 
 .table-filter {
-  background-color: @spring-brown;
+  background-color: @spring-brownish;
   padding: 9px 12px;
 }
 
@@ -208,6 +214,14 @@ table td.action-column {
 
 .status-help-content-table td {
   color: @spring-brown;
+}
+
+.form-control:focus{
+
+  border-color: #b38130;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px #b38130, 0 0 8px #b38130;
+  box-shadow: inset 0 1px 1px #b38130, 0 0 8px #b38130;
 }
 
 .alert-success {

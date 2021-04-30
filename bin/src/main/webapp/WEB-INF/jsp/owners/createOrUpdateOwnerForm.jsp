@@ -7,18 +7,24 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="owners">
-    <h2>
-        <c:if test="${owner['new']}">New </c:if> Owner
+    <h2><spring:message code = "owner"/>
     </h2>
     <form:form modelAttribute="owner" class="form-horizontal" id="add-owner-form">
         <div class="form-group has-feedback">
-            <petclinic:inputField label="First Name" name="firstName"/>
-            <petclinic:inputField label="Last Name" name="lastName"/>
-            <petclinic:inputField label="Address" name="address"/>
-            <petclinic:inputField label="City" name="city"/>
-            <petclinic:inputField label="Telephone" name="telephone"/>
-            <petclinic:inputField label="Username" name="user.username"/>
-            <petclinic:inputField label="Password" name="user.password"/>
+           	<h3><form:label path="firstName"><spring:message code = "firstName"/>&nbsp;</form:label>
+           	<form:input path="firstName"/></h3>
+           	<h3><form:label path="lastName"><spring:message code = "lastName"/>&nbsp;</form:label>
+           	<form:input path="lastName"/></h3>
+           	<h3><form:label path="address"><spring:message code = "address"/>&nbsp;</form:label>
+           	<form:input path="address"/></h3>
+           	<h3><form:label path="city"><spring:message code = "city"/>&nbsp;</form:label>
+           	<form:input path="city"/></h3>
+           	<h3><form:label path="telephone"><spring:message code = "telephone"/>&nbsp;</form:label>
+           	<form:input path="telephone"/></h3>
+           	<h3><form:label path="user.username"><spring:message code = "username"/>&nbsp;</form:label>
+           	<form:input path="user.username"/></h3>
+           	<h3><form:label path="user.password"><spring:message code = "password"/>&nbsp;</form:label>
+           	<form:input path="user.password"/></h3>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
@@ -27,7 +33,7 @@
                         <button class="btn btn-default" type="submit">Add Owner</button>
                     </c:when>
                     <c:otherwise>
-                        <button class="btn btn-default" type="submit">Update Owner</button>
+                        <button class="btn btn-default" type="submit"><spring:message code = "editOwner"/></button>
                     </c:otherwise>
                 </c:choose>
             </div>
