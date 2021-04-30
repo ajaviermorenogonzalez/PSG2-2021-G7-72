@@ -45,6 +45,12 @@
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<span>Pet hotel</span>
 				</petclinic:menuItem>
+				
+				<petclinic:menuItem active="${name eq 'adoptions'}" url="/adoptions/pets"
+					title="pet hotel">
+					<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+					<span><spring:message code = "adoptAPet"></spring:message></span>
+				</petclinic:menuItem>
 
 				<petclinic:menuItem active="${name eq 'error'}" url="/oups"
 					title="trigger a RuntimeException to see how it is handled">

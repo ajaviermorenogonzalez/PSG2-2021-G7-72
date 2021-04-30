@@ -21,17 +21,46 @@
   font-style: normal;
 }
 
-body, h1, h2, h3, p, input {
+@font-face {
+  font-family: 'royalacid';
+  src: url('../fonts/Royalacid_o.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'kiona';
+  src: url('../fonts/kiona-Itallic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'royalacid_relleno';
+  src: url('../fonts/Royalacid.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1, h2, h3{
   margin: 0;
   font-weight: 400;
-  font-family: "varela_roundregular", sans-serif;
+  font-family: "royalacid", sans-serif;
+  color: #34302d;
+}
+
+body, p, input{
+  margin: 0;
+  font-weight: 700;
+  font-family: "kiona", sans-serif;
   color: #34302d;
 }
 
 h1 {
   font-size: 24px;
   line-height: 30px;
-  font-family: "montserratregular", sans-serif;
+  font-family: "royalacid", sans-serif;
 }
 
 h2 {
@@ -39,7 +68,7 @@ h2 {
   font-weight: 700;
   line-height: 24px;
   margin-bottom: 10px;
-  font-family: "montserratregular", sans-serif;
+  font-family: "royalacid", sans-serif;
 }
 
 h3 {
@@ -56,5 +85,5 @@ p {
 
 strong {
   font-weight: 700;
-  font-family: "montserratregular", sans-serif;
+  font-family: "royalacid_relleno", sans-serif;
 }

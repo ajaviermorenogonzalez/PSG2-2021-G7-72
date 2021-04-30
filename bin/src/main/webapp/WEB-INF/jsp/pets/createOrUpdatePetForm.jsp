@@ -14,32 +14,40 @@
     </jsp:attribute>
     <jsp:body>
         <h2>
-            <c:if test="${pet['new']}">New </c:if> Pet
+            
         </h2>
         <form:form modelAttribute="pet"
                    class="form-horizontal">
             <input type="hidden" name="id" value="${pet.id}"/>
             <div class="form-group has-feedback">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Owner</label>
-                    <div class="col-sm-10">
-                        <c:out value="${pet.owner.firstName} ${pet.owner.lastName}"/>
-                    </div>
-                </div>
-                <petclinic:inputField label="Name" name="name"/>
-                <petclinic:inputField label="Birth Date" name="birthDate"/>
-                <div class="control-group">
-                    <petclinic:selectField name="type" label="Type " names="${types}" size="5"/>
-                </div>
+                <h3><spring:message code = "owner"/>&nbsp;
+                <c:out value="${pet.owner.firstName} ${pet.owner.lastName}"/></h3>
+                    
+            	<h3><form:label path="name"><spring:message code = "firstName"/>&nbsp;</form:label>
+           		<form:input path="name" /></h3>
+           		<h3><form:label path="birthDate"><spring:message code = "birthDate"/>&nbsp;</form:label>
+           		<form:input path="birthDate"/></h3>
+           
+           		<h3><form:label path="type"><spring:message code = "type"/>&nbsp;</form:label>
+           		<select name="type">
+  					<option value="bird"><spring:message code = "bird"/></option>
+  					<option value="cat"><spring:message code = "cat"/></option>
+  					<option value="dog"><spring:message code = "dog"/></option>
+  					<option value="hamster"><spring:message code = "hamster"/></option>
+  					<option value="lizard"><spring:message code = "lizard"/></option>
+  					<option value="snake"><spring:message code = "snake"/></option>
+				</select></h3>
+            	</div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <c:choose>
                         <c:when test="${pet['new']}">
-                            <button class="btn btn-default" type="submit">Add Pet</button>
+                            <button class="btn btn-default" type="submit"><spring:message code = "addPet"/></button>
                         </c:when>
                         <c:otherwise>
-                            <button class="btn btn-default" type="submit">Update Pet</button>
+                            <button class="btn btn-default" type="submit"><spring:message code = "updatePet"/></button>
                         </c:otherwise>
                     </c:choose>
                 </div>
