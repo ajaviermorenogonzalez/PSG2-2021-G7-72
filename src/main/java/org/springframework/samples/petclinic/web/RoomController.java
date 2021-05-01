@@ -73,7 +73,7 @@ public class RoomController {
                 model.put("room", room);
     			model.put("pet",petService.findAll());
     			model.put("owner",ownerService.findAll());
-    			model.addAttribute("message", "La mascota que intenta registrar ya tiene una habitación reservada.");
+    			model.addAttribute("message", "La mascota que intenta registrar ya tiene una habitación reservada para esas fechas.");
                 return ROOMS_FORM;
             }
 			return roomsListing(model);

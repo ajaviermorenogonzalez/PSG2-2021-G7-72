@@ -42,10 +42,20 @@ public class RoomService {
     @Transactional(rollbackOn = DuplicatedRoomBookingException.class)
     public void validateAndSave(@Valid Room room) throws DataAccessException, DuplicatedRoomBookingException {
     	Pet rp = room.getPet();
-    	Optional<Integer> p= roomRepo.findPetInRoom(rp);
-    	if(p.isPresent()) {
-    		throw new DuplicatedRoomBookingException();
-    		
+    	Collection<Room> col= roomRepo.findRoomsForPet(rp);
+    	if(!(col.isEmpty())) {
+    		for(Room r : col) {
+    			if( room.getFirstDate().equals(r.getFirstDate()) ||
+    			    (room.getFirstDate().isAfter(r.getFirstDate()) && room.getFirstDate().isBefore(r.getLastDate())) ||
+    			    room.getLastDate().equals(r.getLastDate()) ||
+    			    (room.getLastDate().isAfter(r.getFirstDate()) && room.getLastDate().isBefore(r.getLastDate())) ||
+    			    (room.getFirstDate().isBefore(r.getFirstDate()) && room.getLastDate().isAfter(r.getLastDate())) ) {
+    				
+    				throw new DuplicatedRoomBookingException();
+    				
+    			}
+    		}
+    		roomRepo.save(room);
     	}else {
     		roomRepo.save(room);
     	}
