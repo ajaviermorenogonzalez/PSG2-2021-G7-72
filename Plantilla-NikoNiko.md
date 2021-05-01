@@ -14,12 +14,12 @@
 
 | Day                     | FranciscoJRE14  | antmorgon4     |       siadan     |     FraniBL     | DiegoHill      |
 | -------------           | -------------   | -------------  | -------------    | -------------   | -------------  | 
-| Day 1  12/04/2021       | :smile:         |                |                  |                 |                |               
-| Day 2  16/04/2021       |                 | :smile:        | :smile:          |                 | :smile:        |                
-| Day 3  17/04/2021       |                 | :smile:        |                  |                 |                |
-| Day 4  21/04/2021       |                 |                |                  |                 | :smile:        |
-| Day 5  22/04/2021       |                 |                | :smile:          |                 |                |  
-| Day 6  23/04/2021       |                 | :smile:        | :smile:          |                 | :neutral_face: |
-| Day 7  28/04/2021       |   :smile:       |                | :smile:          |                 |                |
-| Day 8  30/04/2021       |                 |                | :smile:          |                 |                |
+| Day 1  12/04/2021       | :smile:         |                |                  | -               |                |               
+| Day 2  16/04/2021       |                 | :smile:        | :smile:          | :smile          | :smile:        |                
+| Day 3  17/04/2021       |                 | :smile:        |                  | -               |                |
+| Day 4  21/04/2021       |                 |                |                  | :smile          | :smile:        |
+| Day 5  22/04/2021       |                 |                | :smile:          | :smile          |                |  
+| Day 6  23/04/2021       |                 | :smile:        | :smile:          | :smile          | :neutral_face: |
+| Day 7  28/04/2021       |   :smile:       |                | :smile:          | -               |                |
+| Day 8  30/04/2021       |                 |                | :smile:          | :smile:         |                |
 ...
