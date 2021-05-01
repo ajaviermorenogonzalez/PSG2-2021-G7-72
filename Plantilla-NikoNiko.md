@@ -19,7 +19,8 @@
 | Day 3  17/04/2021       |                 | :smile:        |                  | -               |                |
 | Day 4  21/04/2021       |                 |                |                  | :smile:         | :smile:        |
 | Day 5  22/04/2021       |                 |                | :smile:          | :neutral_face:  |                |  
-| Day 6  23/04/2021       |                 | :smile:        | :smile:          | :smile:         | :neutral_face: |
+| Day 6  23/04/2021       |   :smile:       | :smile:        | :smile:          | :smile:         | :neutral_face: |
 | Day 7  28/04/2021       |   :smile:       |                | :smile:          | -               |                |
 | Day 8  30/04/2021       |                 |                | :smile:          | :smile:         |                |
+| Day 9  01/05/2021       | :smile:         |                | :smile:          | :smile:         |                |
 ...
