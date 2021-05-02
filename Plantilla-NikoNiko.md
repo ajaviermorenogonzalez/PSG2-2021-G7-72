@@ -23,4 +23,6 @@
 | Day 7  28/04/2021       |   :smile:       |                | :smile:          | -               |                |
 | Day 8  30/04/2021       |                 |                | :smile:          | :smile:         |                |
 | Day 9  01/05/2021       | :smile:         |                | :smile:          | :smile:         |                |
+| Day 10 02/05/2021       | :smile:         |                |                  |                 |                |
+...
 ...
