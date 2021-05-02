@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.service;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -49,7 +50,7 @@ public class RoomService {
     			    (room.getFirstDate().isAfter(r.getFirstDate()) && room.getFirstDate().isBefore(r.getLastDate())) ||
     			    room.getLastDate().equals(r.getLastDate()) ||
     			    (room.getLastDate().isAfter(r.getFirstDate()) && room.getLastDate().isBefore(r.getLastDate())) ||
-    			    (room.getFirstDate().isBefore(r.getFirstDate()) && room.getLastDate().isAfter(r.getLastDate())) ) {
+    			    (room.getFirstDate().isBefore(r.getFirstDate()) && room.getLastDate().isAfter(r.getLastDate()))) {
     				
     				throw new DuplicatedRoomBookingException();
     				
