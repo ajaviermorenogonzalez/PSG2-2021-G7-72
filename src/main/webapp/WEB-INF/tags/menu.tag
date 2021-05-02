@@ -46,11 +46,13 @@
 					<span>Pet hotel</span>
 				</petclinic:menuItem>
 				
+				<sec:authorize access="hasAuthority('admin') or hasAuthority('owner')">
 				<petclinic:menuItem active="${name eq 'adoptions'}" url="/adoptions/pets"
 					title="pet hotel">
 					<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
 					<span><spring:message code = "adoptAPet"></spring:message></span>
-         </petclinic:menuItem>
+        		</petclinic:menuItem>
+        		</sec:authorize>
 
 				<petclinic:menuItem active="${name eq 'causes'}" url="/causes"
 					title="causes">
