@@ -6,7 +6,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -30,8 +29,6 @@ public class AdoptionApplication extends BaseEntity{
 	private Owner owner;
 
 
-/*	@OneToOne(optional=false)
-	private AdoptionRequest adoptionRequest; */
 	
 	public Pet getPet() {
 		return this.pet;
