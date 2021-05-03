@@ -7,8 +7,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.AdoptionApplication;
-import org.springframework.samples.petclinic.model.Room;
-import org.springframework.samples.petclinic.model.State;
 import org.springframework.samples.petclinic.repository.AdoptionRepository;
 import org.springframework.stereotype.Service;
 
