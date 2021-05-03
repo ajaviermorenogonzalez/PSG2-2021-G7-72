@@ -2,7 +2,6 @@ package org.springframework.samples.petclinic.web;
 
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Date;
 
 import javax.validation.Valid;
 

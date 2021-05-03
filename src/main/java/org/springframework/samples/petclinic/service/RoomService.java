@@ -11,7 +11,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.Room;
 import org.springframework.samples.petclinic.repository.RoomRepository;
-import org.springframework.samples.petclinic.service.exceptions.DuplicatedPetNameException;
 import org.springframework.samples.petclinic.service.exceptions.DuplicatedRoomBookingException;
 import org.springframework.stereotype.Service;
 
@@ -49,7 +48,7 @@ public class RoomService {
     			    (room.getFirstDate().isAfter(r.getFirstDate()) && room.getFirstDate().isBefore(r.getLastDate())) ||
     			    room.getLastDate().equals(r.getLastDate()) ||
     			    (room.getLastDate().isAfter(r.getFirstDate()) && room.getLastDate().isBefore(r.getLastDate())) ||
-    			    (room.getFirstDate().isBefore(r.getFirstDate()) && room.getLastDate().isAfter(r.getLastDate())) ) {
+    			    (room.getFirstDate().isBefore(r.getFirstDate()) && room.getLastDate().isAfter(r.getLastDate()))) {
     				
     				throw new DuplicatedRoomBookingException();
     				
