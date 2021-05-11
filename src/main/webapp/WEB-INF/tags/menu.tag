@@ -46,6 +46,16 @@
 					<span>Pet hotel</span>
 				</petclinic:menuItem>
 				
+				 <petclinic:menuItem active="${name eq 'health'}" url="/health" title="health">
+                    <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
+                    <span>Server</span>
+                </petclinic:menuItem>
+                
+                <petclinic:menuItem active="${name eq 'info'}" url="/info" title="info">
+                    <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
+                    <span>Info of Server</span>
+                </petclinic:menuItem>
+				
 				<sec:authorize access="hasAuthority('admin') or hasAuthority('owner')">
 				<petclinic:menuItem active="${name eq 'adoptions'}" url="/adoptions/pets"
 					title="pet hotel">
