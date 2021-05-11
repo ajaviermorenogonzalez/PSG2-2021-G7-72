@@ -43,6 +43,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/causes/**").permitAll()
 				.antMatchers("/donations/**").permitAll()
 				.antMatchers( "/favicon.ico").permitAll()
+				.antMatchers("/health/**").permitAll()
+				.antMatchers("/info/**").permitAll()
 				.anyRequest().denyAll()
 				.and()
 				 	.formLogin()
