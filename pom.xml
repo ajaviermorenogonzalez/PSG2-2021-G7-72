@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>es.us.psg2</groupId>
     <artifactId>pring-petclinic.psg2.2021-G7-72</artifactId>
-    <version>1.0.0</version>
+    <version>2.0.0</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -129,6 +129,10 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+          <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
