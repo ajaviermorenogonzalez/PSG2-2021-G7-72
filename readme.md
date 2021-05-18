@@ -87,7 +87,7 @@ Visit [http://localhost:8080](http://localhost:8080) in your browser.
 |Properties Files | [application.properties](https://github.com/gii-is-PSG2/spring-petclinic/blob/master/src/main/resources) |
 |Caching | [CacheConfiguration](https://github.com/gii-is-PSG2/spring-petclinic/blob/master/src/main/java/org/springframework/samples/petclinic/system/CacheConfiguration.java) |
 
-5) Heroku deployment. Navigate in your browser with the next URL: https://psg2-2021-2021-g7-72.herokuapp.com/
+5) Heroku deployment. Navigate in your browser with the next URL:https://psg2-2021-g7-72.herokuapp.com/
 
 ## Interesting Spring Petclinic branches and forks
 
