@@ -10,7 +10,12 @@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 	<h2>
 		<spring:message code="donations" />
 	</h2>
-	<form:form action = "/donations/new" modelAttribute="donation" class="form-horizontal"
+	
+	<spring:url value="/donations/new/{causeId}" var="url">
+                        <spring:param name="causeId" value="${causeId}"/>
+    </spring:url>
+	
+	<form:form action="${url}" modelAttribute="donation" class="form-horizontal"
 		id="add-donation-form" method = "POST">
 		<div class="form-group has-feedback">
 		
