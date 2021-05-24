@@ -43,14 +43,16 @@ public class DonationController {
 		return "donations/createDonation";
 	}
 
-	@PostMapping("/new")
-	public String saveDonation(@Valid Donation donation, Integer causeId, BindingResult result, ModelMap model) {
+	@PostMapping("/new/{causeId}")
+	public String saveDonation(@PathVariable("causeId")Integer causeId, @Valid Donation donation, BindingResult result, ModelMap model) {
 		
 		donation.setDate(LocalDate.now());
 		
 		if (result.hasErrors()) {
+			donation = new Donation();
 			model.addAttribute("donation", donation);
-			model.addAttribute("message", "La donación no se ha podido crear correctamente");
+			model.addAttribute("causeId", causeId);
+			model.addAttribute("message", "La donación no se ha podido realizar. Por favor, introduzca datos correctos en el formualrio.");
 			return "donations/createDonation";
 		} else{
 			
