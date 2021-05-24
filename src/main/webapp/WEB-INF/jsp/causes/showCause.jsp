@@ -5,15 +5,14 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="causes">
-
-    <h2><spring:message code="cause" /> : <c:out value = "${cause.name}"> </c:out></h2>
-
-	<h3><spring:message code="description" /> : <c:out value = "${cause.description}"> </c:out> </h3>
-	
-	<h3><spring:message code="budgetTarget" /> : <c:out value = "${cause.budgetTarget}"> </c:out> </h3>
-	
-	<h3><spring:message code="totalBudgetAchieved" /> : <c:out value = "${cause.totalBudgetAchived}"> </c:out> </h3>
-	
+    <spring:message code="cause" /> : <c:out value = "${cause.name}"> </c:out>
+	<hr>
+	<spring:message code="description" /> : <c:out value = "${cause.description}"> </c:out>
+	<hr>
+	<spring:message code="budgetTarget" /> : <c:out value = "${cause.budgetTarget}"> </c:out>
+	<hr>
+	<spring:message code="totalBudgetAchieved" /> : <c:out value = "${cause.totalBudgetAchived}"> </c:out>
+	<hr>
     <table id="roomsTable" class="table table-striped">
         <thead>
         <tr>
