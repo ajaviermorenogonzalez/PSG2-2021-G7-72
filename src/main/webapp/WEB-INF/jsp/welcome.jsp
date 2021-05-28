@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-12">
             <spring:url value="/resources/images/gatoLogo.jpg" htmlEscape="true" var="petsImage"/>
-            <img class="img-responsive" src="${petsImage}"/>
+            <img width="800" class="img-responsive" src="${petsImage}"/>
         </div>
     </div>
     <div style="padding: 10px;">
